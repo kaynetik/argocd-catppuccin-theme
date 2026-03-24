@@ -4,33 +4,34 @@ Custom theme for ArgoCD using the [Catppuccin](https://github.com/catppuccin/pal
 
 ## Setup
 
-### 1. Host the CSS
+### 1. Configure ArgoCD
 
-Push `catppuccin-frappe.css` to a public GitHub repository (e.g. `kaynetik/argocd-catppuccin-theme`).
-
-The file is then available via jsDelivr CDN:
-
-```
-https://cdn.jsdelivr.net/gh/kaynetik/argocd-catppuccin-theme@main/catppuccin-frappe.css
-```
-
-### 2. Configure ArgoCD
+Load the theme from public CDN.
 
 Add `ui.cssurl` to the `argocd-cm` ConfigMap (or via Helm values under `configs.cm`):
 
 ```yaml
 configs:
   cm:
-    ui.cssurl: "https://cdn.jsdelivr.net/gh/kaynetik/argocd-catppuccin-theme@main/catppuccin-frappe.css"
+    ui.cssurl: "https://cdn.jsdelivr.net/gh/kaynetik/argocd-catppuccin-theme@main/catppuccin.css"
 ```
 
-### 3. Refresh the UI
+### 2. Refresh the UI
 
 Hard-refresh the browser (`Cmd+Shift+R` / `Ctrl+Shift+R`).
 
-### 4. Switch between themes
+### 3. Switch between themes
 
 ArgoCD stores theme preference in browser `localStorage`. Toggle between dark and light at **Settings > Appearance** in the UI.
+
+---
+
+## Sample Screenshots
+
+<img width="1020" height="1216" alt="image" src="https://github.com/user-attachments/assets/0dc9f2c2-fcbb-4be3-a59b-2a141b24de91" />
+<img width="1106" height="1067" alt="image" src="https://github.com/user-attachments/assets/1b50429a-775f-4bb9-b34b-1858df4c7e72" />
+
+---
 
 ## Palette (Dark -- Frappe)
 
