@@ -1,11 +1,6 @@
-# ArgoCD Catppuccin Frappe Theme
+# ArgoCD Catppuccin Theme
 
-Custom dark theme for ArgoCD using the [Catppuccin Frappe](https://github.com/catppuccin/palette) palette.
-
-## Prerequisites
-
-1. ArgoCD running with dark mode enabled (user preference)
-2. A public repository or CDN to host the CSS file
+Custom theme for ArgoCD using the [Catppuccin](https://github.com/catppuccin/palette) palette. Dark mode uses **Frappe**, light mode uses **Latte**.
 
 ## Setup
 
@@ -31,53 +26,62 @@ configs:
 
 ### 3. Refresh the UI
 
-Hard-refresh the browser (`Cmd+Shift+R` / `Ctrl+Shift+R`). The theme loads on every page visit.
+Hard-refresh the browser (`Cmd+Shift+R` / `Ctrl+Shift+R`).
 
-## Palette
+### 4. Switch between themes
 
-| Role | Color | Hex |
-|------|-------|-----|
-| Background (base) | Base | `#303446` |
-| Panels (mantle) | Mantle | `#292c3c` |
-| Deepest (crust) | Crust | `#232634` |
-| Surface | Surface 0/1/2 | `#414559` / `#51576d` / `#626880` |
-| Main text | Text | `#c6d0f5` |
-| Subdued text | Subtext 0/1 | `#a5adce` / `#b5bfe2` |
-| Primary accent | Blue | `#8caaee` |
-| Secondary accent | Lavender | `#babbf1` |
-| Success / Healthy | Green | `#a6d189` |
-| Warning / OutOfSync | Yellow | `#e5c890` |
-| Error / Degraded | Red | `#e78284` |
-| Info / links | Mauve | `#ca9ee6` |
+ArgoCD stores theme preference in browser `localStorage`. Toggle between dark and light at **Settings > Appearance** in the UI.
+
+## Palette (Dark -- Frappe)
+
+| Role               | Token        | Hex       |
+|:--------------------|:-------------|:----------|
+| Background          | Base         | `#303446` |
+| Panels              | Mantle       | `#292c3c` |
+| Deepest layer       | Crust        | `#232634` |
+| Surface             | Surface 0-2  | `#414559` - `#626880` |
+| Main text           | Text         | `#c6d0f5` |
+| Subdued text        | Subtext 0-1  | `#a5adce` - `#b5bfe2` |
+| Primary accent      | Blue         | `#8caaee` |
+| Links               | Blue         | `#8caaee` |
+
+## Palette (Light -- Latte)
+
+| Role               | Token        | Hex       |
+|:--------------------|:-------------|:----------|
+| Background          | Base         | `#eff1f5` |
+| Panels              | Mantle       | `#e6e9ef` |
+| Deepest layer       | Crust        | `#dce0e8` |
+| Surface             | Surface 0-2  | `#ccd0da` - `#acb0be` |
+| Main text           | Text         | `#4c4f69` |
+| Primary accent      | Blue         | `#1e66f5` |
 
 ## Coverage
 
-The theme targets all major ArgoCD UI components:
-
-- Top bar and breadcrumbs
-- Sidebar navigation
-- Application list (table and tile views)
-- Application detail panels
-- Resource tree (node graph, pods, labels)
+- Sidebar navigation and filter panel
+- Top bar / breadcrumbs / action buttons
+- Application tiles and table list
+- Application status panel
+- Resource tree nodes and labels
 - Sliding panels and white-box containers
-- Tabs, buttons, dropdowns
-- Form inputs and focus states
-- Diff viewer (added/removed line highlights)
-- Tooltips and popovers
-- Scrollbars
-- Health and sync status icon colors
-- Login page
+- Tabs, buttons, form inputs
+- Dropdown menus (rendered outside the theme wrapper)
+- Autocomplete lists (Labels, Projects, Clusters, Namespaces)
+- Select dropdowns with search
+- Popup modals
+- Login page and logout button
+- Search bar
+- Scrollbars (Webkit)
 - Banner bar
-- Mobile responsive adjustments
 
 ## Customization
 
-All Catppuccin colors are declared as CSS custom properties (`--ctp-*`) at the top of the file.
-To switch to a different Catppuccin flavor (Latte, Macchiato, Mocha), replace the hex values
-with the corresponding palette from https://github.com/catppuccin/palette.
+All Catppuccin colors are declared as CSS custom properties (`--ctp-*`) under `.theme-dark` and `.theme-light` selectors. To swap to a different Catppuccin flavor (Macchiato, Mocha), replace the hex values from the [Catppuccin palette](https://github.com/catppuccin/palette).
+
+> [!NOTE]
+> Elements like `.argo-dropdown__content` and `.autocomplete__items` are rendered as direct children of `<body>`, outside the `.theme-dark` / `.theme-light` wrapper div. These are styled with hardcoded Frappe hex values at the bottom of the CSS file since CSS variables from the wrapper are not inherited.
 
 ## References
 
-- [ArgoCD Custom Styles docs](https://argo-cd.readthedocs.io/en/stable/operator-manual/custom-styles/)
+- [ArgoCD Custom Styles documentation](https://argo-cd.readthedocs.io/en/stable/operator-manual/custom-styles/)
 - [Catppuccin palette](https://github.com/catppuccin/palette)
-
